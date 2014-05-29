@@ -14,8 +14,9 @@ if(!COCKPIT_ADMIN && !COCKPIT_REST) {
       });
 
       // COLLECTIONS
-      $twig_funcs[] = new Twig_SimpleFunction('collection', function($name, $query = []){
-        return collection($name)->find($query);
+      $twig_funcs[] = new Twig_SimpleFunction('collection', function($name, $query = [], $array = true){
+        $items = collection($name)->find($query);
+        return $array ? $items->toArray() : $items;
       });
 
       // MEDIAMANAGER
