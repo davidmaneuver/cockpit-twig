@@ -1,14 +1,15 @@
 # Cockpit-Twig
 
-Use Cockpit in your Twig projects.
+Use Cockpit and Twig together.
 
 - http://getcockpit.com
 - https://github.com/aheinze/cockpit
+- http://twig.sensiolabs.org
 
 ### Installation
 
-1. Download zip and unpack to 'your_cockpit_folder/modules/addons'.
-2. Make sure you require 'your_cockpit_folder/bootstrap.php'.
+1. Download zip and unpack to '<your_cockpit_folder>/modules/addons/twig'.
+2. Make sure you require '<your_cockpit_folder>/bootstrap.php'.
 3. Hook up your Twig_Environment to the module.
 
   ```php
