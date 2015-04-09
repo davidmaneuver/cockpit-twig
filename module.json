@@ -1,6 +1,6 @@
 {
     "name"       : "Twig",
-    "version"    : "0.1",
+    "version"    : "0.2",
     "description": "Use cockpit functions in twig templates",
     "homepage"   : "",
     "license"    : "MIT"
