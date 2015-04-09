@@ -59,9 +59,19 @@ Query a collection:
 
 #### Regions
 
+Render the entire region, with template:
+
 ```php
 {{ region('info') }}
 ```
+
+Render one field:
+
+```php
+{{ region_field('info', 'title') }}
+```
+
+Parameters are: region name & field name.
 
 #### Galleries & Mediamanager
 

@@ -14,7 +14,16 @@ if(!COCKPIT_ADMIN && !COCKPIT_REST) {
       });
 
       $twig_funcs[] = new Twig_SimpleFunction('region_field', function($region, $field, $params = []){
-        return cockpit('regions:region_field', $region, $field, 'value');
+        $value = cockpit('regions:region_field', $region, $field, 'value');
+        $region_obj = cockpit('regions:get_region', $region);
+        $field_obj = array_filter($region_obj['fields'], function ($i) use ($field) { return $i['name'] == $field; });
+        if (!empty($field_obj)) {
+          $field_obj = array_pop($field_obj);
+          if ($field_obj['type'] == 'markdown') {
+            $value = cockpit("cockpit")->markdown($value);
+          }
+        }
+        echo $value;
       });
 
       // COLLECTIONS
