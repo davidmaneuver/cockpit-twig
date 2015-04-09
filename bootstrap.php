@@ -10,7 +10,11 @@ if(!COCKPIT_ADMIN && !COCKPIT_REST) {
 
       // REGIONS
       $twig_funcs[] = new Twig_SimpleFunction('region', function($name, $params = []){
-        region($name, $params);
+        return cockpit('regions:render', $name);
+      });
+
+      $twig_funcs[] = new Twig_SimpleFunction('region_field', function($region, $field, $params = []){
+        return cockpit('regions:region_field', $region, $field, 'value');
       });
 
       // COLLECTIONS
