@@ -75,9 +75,19 @@ Parameters are: region name & field name.
 
 #### Galleries & Mediamanager
 
+Print an image tag for each image in gallery:
+
 ```php
 {% for image in gallery('projects') %}
   {{ thumbnail(image.path) }}
+{% endfor %}
+```
+
+or just the url:
+
+```php
+{% for image in gallery('projects') %}
+  <img src="{{ thumbnail_url(image.path) }}" />
 {% endfor %}
 ```
 
@@ -90,6 +100,23 @@ Parameters are: region name & field name.
   <input type="submit" value="submit" />
 </form>
 ```
+
+### Authentication Methods
+
+get_user() returns a User object representing the currently logged in user if any.
+has_access($resource, $action) returns true or false depending on the granted permissions for that action and resource and for the currently logged in user.
+
+```php
+{% set user = get_user() %}
+{% if user %}
+  Nice to see you again {{ user.name }}!
+  {% if has_access('gallery', 'create') %}
+    Let's snap some pictures.
+  {% endif %}
+{% endif %}
+```
+
+
 
 ## Copyright and license
 

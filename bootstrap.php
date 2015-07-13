@@ -50,6 +50,14 @@ if(!COCKPIT_ADMIN && !COCKPIT_REST) {
         cockpit("forms")->form($name, $options);
       });
 
+      // AUTH
+      $twig_funcs[] = new Twig_SimpleFunction('get_user', function(){
+        return cockpit('auth')->getUser();
+      });
+      $twig_funcs[] = new Twig_SimpleFunction('has_access', function($resource, $action){
+        return cockpit('auth')->hasaccess($resource, $action);
+      });
+
       // Add functions to Twig.
       foreach ($twig_funcs as $func) {
         $env->addFunction($func);
